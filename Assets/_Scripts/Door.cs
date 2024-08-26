@@ -24,7 +24,7 @@ public class Door : MonoBehaviour
     void Start()
     {
         sprite = gameObject.GetComponent<SpriteRenderer>();
-		sprite.color = new Color(1f,1f,1f,0.25f);
+		sprite.color = new Color(1f,1f,1f,0.15f);
     }
 
     void Update()
