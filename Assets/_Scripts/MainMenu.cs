@@ -5,23 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public Animator transitioAnimator;
+    public Animator transitionAnim;
+    public Animator settingAnim;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private bool settingActive;
 
     public void SelectLevel()
     {
         StartCoroutine(Transition());
+    }
+    
+    public void ActivateSetting()
+    {
+        settingActive = !settingActive;
+        settingAnim.SetBool("Setting Active", settingActive);
     }
 
     public void ExitGame()
@@ -31,15 +28,15 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator ExitTransition()
     {
-        transitioAnimator.SetTrigger("Transition");
-        yield return new WaitForSeconds(2f);
+        transitionAnim.SetTrigger("Exit");
+        yield return new WaitForSeconds(1f);
         Application.Quit();
     }
 
     private IEnumerator Transition()
     {
-        transitioAnimator.SetTrigger("Transition");
+        transitionAnim.SetTrigger("Transition");
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Basic");
     }
 }

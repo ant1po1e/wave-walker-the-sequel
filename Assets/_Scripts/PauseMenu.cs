@@ -7,12 +7,14 @@ public class PauseMenu : MonoBehaviour
 {
     private bool isPaused;
 
+    public GameObject GUI;
+
     public Animator pauseAnim;
     public Animator transitionAnim;
     
     void Start()
     {
-        pauseAnim.SetBool("Is Paused", false); 
+        pauseAnim.SetBool("Is Paused", false);
     }
 
     void Update()
@@ -27,7 +29,7 @@ public class PauseMenu : MonoBehaviour
     void UpdatePauseState()
     {
         pauseAnim.SetBool("Is Paused", isPaused); 
-        // GUI.SetActive(!isPaused);
+        GUI.SetActive(!isPaused);
         Time.timeScale = isPaused ? 0f : 1f;
     }
 

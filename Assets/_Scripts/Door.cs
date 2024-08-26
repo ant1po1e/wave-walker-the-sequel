@@ -16,6 +16,7 @@ public class Door : MonoBehaviour
     }
     #endregion
 
+    public Animator needKeyText;
     private SpriteRenderer sprite;
 
     public bool hasKey;
@@ -38,7 +39,15 @@ public class Door : MonoBehaviour
     {
         if (hasKey == false)
         {
-            Debug.Log("Need a key");
+            needKeyText.SetBool("Activate", true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) 
+    {    
+        if (hasKey == false)
+        {
+            needKeyText.SetBool("Activate", false);
         }
     }
 }
