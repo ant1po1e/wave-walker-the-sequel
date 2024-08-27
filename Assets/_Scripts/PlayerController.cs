@@ -21,8 +21,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        Move();
+
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > canFire) 
         {
             Instantiate(sonarPrefab, transform.position, Quaternion.identity);
@@ -30,11 +32,6 @@ public class PlayerController : MonoBehaviour
         }
         
         ProcessInput();
-    }
-
-    void FixedUpdate()
-    {
-        Move();
     }
 
     void ProcessInput()

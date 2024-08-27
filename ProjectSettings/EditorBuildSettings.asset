@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Basic.unity
     guid: a237118f6a3d1f44e9e1dd1948f4f9dc
+  - enabled: 1
+    path: Assets/_Scenes/Basic Key.unity
+    guid: b10dccac02ae60747acdc451a13a6c65
+  - enabled: 1
+    path: Assets/_Scenes/Basic Enemy.unity
+    guid: 1ff30c4b9a0b611479bc5e1585c82387
   m_configObjects: {}

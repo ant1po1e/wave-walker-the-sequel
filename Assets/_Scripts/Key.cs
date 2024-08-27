@@ -6,7 +6,10 @@ public class Key : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        Door.instance.hasKey = true;
-        Destroy(gameObject);
+        if (other.CompareTag("Player"))
+        { 
+            Door.instance.hasKey = true;
+            Destroy(gameObject);
+        }
     }
 }

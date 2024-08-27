@@ -51,6 +51,9 @@ MonoBehaviour:
   wallMask:
     serializedVersion: 2
     m_Bits: 64
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 128
   fadeInDuration: 1
   fadeOutDuration: 1
 --- !u!120 &3291570738552266760

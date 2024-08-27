@@ -10,9 +10,9 @@ public class MainMenu : MonoBehaviour
 
     private bool settingActive;
 
-    public void SelectLevel()
+    public void SelectLevel(string sceneName)
     {
-        StartCoroutine(Transition());
+        StartCoroutine(Transition(sceneName));
     }
     
     public void ActivateSetting()
@@ -33,10 +33,10 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    private IEnumerator Transition()
+    private IEnumerator Transition(string name)
     {
         transitionAnim.SetTrigger("Transition");
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Basic");
+        SceneManager.LoadScene(name);
     }
 }

@@ -37,17 +37,23 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (hasKey == false)
+        if (other.CompareTag("Player"))
         {
-            needKeyText.SetBool("Activate", true);
+            if (hasKey == false)
+            {
+                needKeyText.SetBool("Activate", true);
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) 
     {    
-        if (hasKey == false)
+        if (other.CompareTag("Player"))
         {
-            needKeyText.SetBool("Activate", false);
+            if (hasKey == false)
+            {
+                needKeyText.SetBool("Activate", false);
+            }
         }
     }
 }

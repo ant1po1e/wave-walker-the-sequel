@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class SonarPulse : MonoBehaviour
 {
-    public float maxDistance = 10f; 
+    public float maxDistance = 7f; 
     public int segments = 360;   
     public float speed = 5f;       
     public LayerMask wallMask;
+    public LayerMask enemyMask;  
     public float fadeInDuration = 1f;  
     public float fadeOutDuration = 1f; 
 
@@ -82,15 +83,26 @@ public class SonarPulse : MonoBehaviour
         {
             float angle = i * angleStep * Mathf.Deg2Rad;
             Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, currentRadius, wallMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, currentRadius, wallMask | enemyMask);
 
             if (hit.collider != null)
             {
                 lineRenderer.SetPosition(i, hit.point - (Vector2)transform.position);
+
                 if (hit.collider.CompareTag("Key"))
-            {
-                lineMaterial.SetColor("_Color", Color.yellow);
-            }
+                {
+                    lineMaterial.SetColor("_Color", Color.yellow);
+                }
+                else if (hit.collider.CompareTag("Enemy")) 
+                {
+                    lineMaterial.SetColor("_Color", Color.red);
+
+                    EnemyAI enemyAI = hit.collider.GetComponent<EnemyAI>();
+                    if (enemyAI != null)
+                    {
+                        enemyAI.TriggerChase();
+                    }
+                }
             }
             else
             {
