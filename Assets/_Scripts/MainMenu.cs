@@ -7,8 +7,10 @@ public class MainMenu : MonoBehaviour
 {
     public Animator transitionAnim;
     public Animator settingAnim;
+    public Animator levelSelectAnim;
 
     private bool settingActive;
+    private bool levelSelectActive;
 
     public void SelectLevel(string sceneName)
     {
@@ -19,6 +21,12 @@ public class MainMenu : MonoBehaviour
     {
         settingActive = !settingActive;
         settingAnim.SetBool("Setting Active", settingActive);
+    }
+
+    public void ActivateLevelSelect()
+    {
+        levelSelectActive = !levelSelectActive;
+        levelSelectAnim.SetBool("Level Active", levelSelectActive);
     }
 
     public void ExitGame()

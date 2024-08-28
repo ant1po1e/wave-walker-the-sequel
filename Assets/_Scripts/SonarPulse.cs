@@ -31,7 +31,7 @@ public class SonarPulse : MonoBehaviour
         lineMaterial.SetFloat("_Fade", 0f);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (!isFadingOut)
         {

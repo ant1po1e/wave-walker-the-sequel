@@ -3,13 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
+    #region Singleton
+    public static GameManager instance { get; private set; }
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+    #endregion
+
     private bool isPaused;
+    private bool isDead;
 
     public GameObject GUI;
 
     public Animator pauseAnim;
+    public Animator deadAnim;
     public Animator transitionAnim;
     
     void Start()
@@ -19,7 +33,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && isDead == false)
         {
             isPaused = !isPaused;
             UpdatePauseState();
@@ -33,6 +47,13 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = isPaused ? 0f : 1f;
     }
 
+    public void PlayerDead()
+    {
+        isDead = true;
+        deadAnim.SetTrigger("Dead");
+        Time.timeScale = 0f;
+    }
+
     public void Action(string name)
     {
         switch (name)
@@ -41,7 +62,14 @@ public class PauseMenu : MonoBehaviour
             isPaused = !isPaused;
             UpdatePauseState();
             break;
-            case "Main Menu": StartCoroutine(GoToMainMenu()); break;
+
+            case "Restart":
+            StartCoroutine(ReloadScene());
+            break;
+
+            case "Main Menu": 
+            StartCoroutine(GoToMainMenu());
+            break;
         }
     }
     
@@ -51,5 +79,13 @@ public class PauseMenu : MonoBehaviour
         transitionAnim.SetTrigger("Transition");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("Main Menu");
+    }
+
+    IEnumerator ReloadScene()
+    {
+        Time.timeScale = 1;
+        transitionAnim.SetTrigger("Transition");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

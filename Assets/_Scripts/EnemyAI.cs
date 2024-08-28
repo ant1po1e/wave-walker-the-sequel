@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
         agent.updateUpAxis = false;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (isChasing)
         {
@@ -46,7 +46,8 @@ public class EnemyAI : MonoBehaviour
         {
             isChasing = false;
             agent.ResetPath();
-            Destroy(other.gameObject);  
+            GameManager.instance.PlayerDead();
+            Destroy(other.gameObject, 1f);
         }
     }
 }
