@@ -47,7 +47,6 @@ public class EnemyAI : MonoBehaviour
             isChasing = false;
             agent.ResetPath();
             GameManager.instance.PlayerDead();
-            Destroy(other.gameObject, 1f);
         }
     }
 }

@@ -17,6 +17,8 @@ public class Door : MonoBehaviour
     #endregion
 
     public Animator needKeyText;
+    public Animator nextLevel;
+
     private SpriteRenderer sprite;
 
     public bool hasKey;
@@ -42,6 +44,10 @@ public class Door : MonoBehaviour
             if (hasKey == false)
             {
                 needKeyText.SetBool("Activate", true);
+            } else 
+            {
+                nextLevel.SetTrigger("Next");
+                GameManager.instance.isFinished = true;  
             }
         }
     }

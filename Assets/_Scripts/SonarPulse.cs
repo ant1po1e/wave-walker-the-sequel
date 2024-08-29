@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SonarPulse : MonoBehaviour
 {
-    public float maxDistance = 7f; 
+    public float maxDistance = 5f; 
     public int segments = 360;   
     public float speed = 5f;       
     public LayerMask wallMask;

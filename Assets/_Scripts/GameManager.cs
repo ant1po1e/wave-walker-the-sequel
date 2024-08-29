@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     private bool isPaused;
     private bool isDead;
+    public bool isFinished;
 
     public GameObject GUI;
 
@@ -33,10 +34,27 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && isDead == false)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = !isPaused;
-            UpdatePauseState();
+            if (isDead == false || isFinished == false)
+            {
+                isPaused = !isPaused;
+                UpdatePauseState();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isDead == true || isFinished == true)
+                Action("Main Menu");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (isDead == true)
+                Action("Restart");
+            else if (isFinished == true)
+                Action("Next Level");
         }
     }
     
@@ -67,6 +85,10 @@ public class GameManager : MonoBehaviour
             StartCoroutine(ReloadScene());
             break;
 
+            case "Next Level":
+            StartCoroutine(NextLevel());
+            break;
+
             case "Main Menu": 
             StartCoroutine(GoToMainMenu());
             break;
@@ -83,9 +105,16 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ReloadScene()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         transitionAnim.SetTrigger("Transition");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator NextLevel()
+    {
+        transitionAnim.SetTrigger("Transition");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
