@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(sonarPrefab, transform.position, Quaternion.identity);
             canFire = Time.time + fireRate;
+
+            AudioManager audioManager = AudioManager.instance;
+            audioManager.PlaySFX("sonarPulse");
         }
         
         ProcessInput();

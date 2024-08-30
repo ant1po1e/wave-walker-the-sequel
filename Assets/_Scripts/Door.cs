@@ -46,6 +46,8 @@ public class Door : MonoBehaviour
                 needKeyText.SetBool("Activate", true);
             } else 
             {
+                AudioManager audioManager = AudioManager.instance;
+                audioManager.PlaySFX("door");
                 nextLevel.SetTrigger("Next");
                 GameManager.instance.isFinished = true;  
             }

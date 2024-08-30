@@ -44,6 +44,8 @@ public class MainMenu : MonoBehaviour
     private IEnumerator Transition(string name)
     {
         transitionAnim.SetTrigger("Transition");
+        AudioManager audioManager = AudioManager.instance;
+        audioManager.PlaySFX("transition");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(name);
     }
