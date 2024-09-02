@@ -10,7 +10,7 @@ public class TileGeneratorEditor : Editor
         DrawDefaultInspector();
 
         TileGenerator generator = (TileGenerator)target;
-        if (GUILayout.Button("Generate Map"))
+        if (GUILayout.Button("Generate Tiles"))
         {
             generator.GenerateMap();
         }

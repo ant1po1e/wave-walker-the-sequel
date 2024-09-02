@@ -8,7 +8,7 @@ public class TileGenerator : MonoBehaviour
     public Tilemap tilemap;  
     public Tile wallTile;    
     public Vector2Int mapSize = new Vector2Int(10, 10); 
-    public float wallProbability = 0.3f; 
+    public float wallDensity = 0.3f; 
 
     public void ClearMap()
     {
