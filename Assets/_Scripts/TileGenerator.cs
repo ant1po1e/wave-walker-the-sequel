@@ -23,7 +23,7 @@ public class TileGenerator : MonoBehaviour
         {
             for (int y = 0; y < mapSize.y; y++)
             {
-                if (Random.value < wallProbability)
+                if (Random.value < wallDensity)
                 {
                     tilemap.SetTile(new Vector3Int(x, y, 0), wallTile);
                 }
