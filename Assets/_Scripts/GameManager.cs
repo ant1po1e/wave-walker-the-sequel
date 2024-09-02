@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
     public void PlayerDead()
     {
         isDead = true;
+        AudioManager audioManager = AudioManager.instance;
+        audioManager.PlaySFX("dead");
         deadAnim.SetTrigger("Dead");
         Time.timeScale = 0f;
     }

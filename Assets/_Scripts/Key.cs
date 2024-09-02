@@ -8,6 +8,8 @@ public class Key : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         { 
+            AudioManager audioManager = AudioManager.instance;
+            audioManager.PlaySFX("key");
             Door.instance.hasKey = true;
             Destroy(gameObject);
         }
