@@ -3006,8 +3006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 519610950}
   SFXsource: {fileID: 16453380}
-  bgm: {fileID: 8300000, guid: b14c6da11f1f5b941b6c0c8bbf64707a, type: 3}
-  sonarPulse: {fileID: 8300000, guid: 983f258f70dc09044897083d562753e6, type: 3}
+  audioClips: []
 --- !u!4 &1064492806
 Transform:
   m_ObjectHideFlags: 0
@@ -4435,7 +4434,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.75, y: 0, z: 0}
-  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
