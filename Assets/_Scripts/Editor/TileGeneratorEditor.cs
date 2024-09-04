@@ -1,6 +1,6 @@
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
-using UnityEngine;
 
 [CustomEditor(typeof(TileGenerator))]
 public class TileGeneratorEditor : Editor
