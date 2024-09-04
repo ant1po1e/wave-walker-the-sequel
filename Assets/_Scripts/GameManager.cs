@@ -117,7 +117,8 @@ public class GameManager : MonoBehaviour
     IEnumerator NextLevel()
     {
         transitionAnim.SetTrigger("Transition");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1f;
     }
 }

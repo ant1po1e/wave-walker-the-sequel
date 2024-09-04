@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
@@ -46,6 +47,8 @@ public class Door : MonoBehaviour
                 needKeyText.SetBool("Activate", true);
             } else 
             {
+                UnlockNewLevel();
+                Time.timeScale = 0f;
                 AudioManager audioManager = AudioManager.instance;
                 audioManager.PlaySFX("door");
                 nextLevel.SetTrigger("Next");
@@ -62,6 +65,16 @@ public class Door : MonoBehaviour
             {
                 needKeyText.SetBool("Activate", false);
             }
+        }
+    }
+
+    void UnlockNewLevel()
+    {
+        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
+        {
+            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);
+            PlayerPrefs.Save();
         }
     }
 }
