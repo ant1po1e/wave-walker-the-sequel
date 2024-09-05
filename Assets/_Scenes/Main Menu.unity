@@ -6560,10 +6560,13 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 983f258f70dc09044897083d562753e6, type: 3}
   - {fileID: 8300000, guid: 34601140c79296a498fae9c7cc1b960d, type: 3}
-  - {fileID: 8300000, guid: dfa9d6bda1a5be148b08fa0865d2828b, type: 3}
+  - {fileID: 8300000, guid: 39366bd9ce3361943bf485f6ffc39f4d, type: 3}
   - {fileID: 8300000, guid: b8fd9781061e70c439e1f358d1205521, type: 3}
   - {fileID: 8300000, guid: a9688b06ad916c144a5fef9200970f2f, type: 3}
   - {fileID: 8300000, guid: 200ed64c73e090e4abd0195070d4205a, type: 3}
+  - {fileID: 8300000, guid: 589e1e08e31e9734ab176fa7ee73ba48, type: 3}
+  - {fileID: 8300000, guid: c7ce0177f94d9de4c9fbaeff16092fec, type: 3}
+  - {fileID: 8300000, guid: b3c6e4284512ed34fba69b896a1a871d, type: 3}
 --- !u!4 &1906963311
 Transform:
   m_ObjectHideFlags: 0

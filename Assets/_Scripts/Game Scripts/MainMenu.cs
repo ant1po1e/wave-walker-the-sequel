@@ -30,6 +30,7 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator ExitTransition()
     {
+        AudioManager.instance.PlaySFX("transition 3");  
         transitionAnim.SetTrigger("Exit");
         yield return new WaitForSeconds(1f);
         Application.Quit();

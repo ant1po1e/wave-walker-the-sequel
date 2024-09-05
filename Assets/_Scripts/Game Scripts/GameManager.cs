@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +22,7 @@ public class GameManager : MonoBehaviour
     public bool isFinished;
 
     public GameObject GUI;
+    public float jumpscareChance = 0.05f;
 
     public Animator pauseAnim;
     public Animator deadAnim;
@@ -69,10 +69,24 @@ public class GameManager : MonoBehaviour
     public void PlayerDead()
     {
         isDead = true;
-        AudioManager audioManager = AudioManager.instance;
-        audioManager.PlaySFX("dead");
-        deadAnim.SetTrigger("Dead");
+
+        if (Random.value < jumpscareChance)
+        {
+            TriggerJumpscare();
+        }
+        else
+        {
+            deadAnim.SetTrigger("Dead");
+            AudioManager.instance.PlaySFX("dead");  
+        }
+
         Time.timeScale = 0f;
+    }
+
+    void TriggerJumpscare()
+    {
+        AudioManager.instance.PlaySFX("jumpscare"); 
+        deadAnim.SetTrigger("Jumpscare");
     }
 
     public void Action(string name)
@@ -101,6 +115,7 @@ public class GameManager : MonoBehaviour
     IEnumerator GoToMainMenu()
     {
         Time.timeScale = 1f;
+        AudioManager.instance.PlaySFX("transition");  
         transitionAnim.SetTrigger("Transition");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("Main Menu");
@@ -109,6 +124,7 @@ public class GameManager : MonoBehaviour
     IEnumerator ReloadScene()
     {
         Time.timeScale = 1f;
+        AudioManager.instance.PlaySFX("transition");  
         transitionAnim.SetTrigger("Transition");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -117,6 +133,7 @@ public class GameManager : MonoBehaviour
     IEnumerator NextLevel()
     {
         transitionAnim.SetTrigger("Transition");
+        AudioManager.instance.PlaySFX("nextLevel");  
         yield return new WaitForSecondsRealtime(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1f;

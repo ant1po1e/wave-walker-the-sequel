@@ -1772,6 +1772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFinished: 0
   GUI: {fileID: 447732539}
+  jumpscareChance: 1
   pauseAnim: {fileID: 1535166588}
   deadAnim: {fileID: 575846995}
   transitionAnim: {fileID: 2071324616}
