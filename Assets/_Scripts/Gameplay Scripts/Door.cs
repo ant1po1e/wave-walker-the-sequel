@@ -19,6 +19,7 @@ public class Door : MonoBehaviour
 
     public Animator needKeyText;
     public Animator nextLevel;
+    public GameObject keyIcon;
 
     private SpriteRenderer sprite;
 
@@ -28,6 +29,7 @@ public class Door : MonoBehaviour
     {
         sprite = gameObject.GetComponent<SpriteRenderer>();
 		sprite.color = new Color(1f,1f,1f,0.15f);
+        keyIcon.SetActive(false);
     }
 
     void Update()
@@ -35,6 +37,7 @@ public class Door : MonoBehaviour
         if (hasKey == true)
         {
             sprite.color = new Color(1f,1f,1f,1f);
+            keyIcon.SetActive(true);
         }
     }
 
