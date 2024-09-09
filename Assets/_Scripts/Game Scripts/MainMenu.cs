@@ -6,15 +6,23 @@ public class MainMenu : MonoBehaviour
 {
     public Animator transitionAnim;
     public Animator settingAnim;
+    public Animator creditsAnim;
     public Animator levelSelectAnim;
 
     private bool settingActive;
+    private bool creditsActive;
     private bool levelSelectActive; 
     
     public void ActivateSetting()
     {
         settingActive = !settingActive;
         settingAnim.SetBool("Setting Active", settingActive);
+    }
+
+    public void ActivateCredits()
+    {
+        creditsActive = !creditsActive;
+        creditsAnim.SetBool("Credits Active", creditsActive);
     }
 
     public void ActivateLevelSelect()
