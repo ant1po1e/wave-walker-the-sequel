@@ -1,34 +1,32 @@
 using UnityEngine;
-using UnityEngine.AI; 
 
 public class EnemyAI : MonoBehaviour
 {
-    public float chaseDuration = 3f;  
-    public float speed = 3f;  
+    public float chaseDuration = 3f;
+    public float speed = 3f;
+
     private Transform player;
     private bool isChasing = false;
     private float chaseEndTime;
-    private NavMeshAgent agent;
+    private Rigidbody2D rb;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
-        agent.speed = speed;  
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         if (isChasing)
         {
-            agent.SetDestination(player.position);
+            Vector2 direction = (player.position - transform.position).normalized;
+            rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
 
             if (Time.time > chaseEndTime)
             {
                 isChasing = false;
-                agent.ResetPath();  
+                rb.velocity = Vector2.zero;
             }
         }
     }
@@ -36,15 +34,15 @@ public class EnemyAI : MonoBehaviour
     public void TriggerChase()
     {
         isChasing = true;
-        chaseEndTime = Time.fixedTime + chaseDuration;
+        chaseEndTime = Time.time + chaseDuration;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (other.CompareTag("Player") && isChasing == true)
+        if (col.gameObject.CompareTag("Player") && isChasing)
         {
             isChasing = false;
-            agent.ResetPath();
+            rb.velocity = Vector2.zero;
             GameManager.instance.PlayerDead();
         }
     }
