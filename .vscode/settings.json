@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Wave Walker.sln"
+    "dotnet.defaultSolution": "Wave Walker - The sequel.sln"
 }

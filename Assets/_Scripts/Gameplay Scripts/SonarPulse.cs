@@ -93,7 +93,7 @@ public class SonarPulse : MonoBehaviour
                 {
                     lineMaterial.SetColor("_Color", Color.yellow);
                 }
-                else if (hit.collider.CompareTag("Enemy")) 
+                else if (hit.collider.CompareTag("Enemy") || hit.collider.CompareTag("Trap")) 
                 {
                     lineMaterial.SetColor("_Color", Color.red);
 
