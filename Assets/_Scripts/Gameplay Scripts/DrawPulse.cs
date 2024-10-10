@@ -14,7 +14,7 @@ public class DrawPulse : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.K) && Time.time > canFire) 
+        if (Input.GetKeyDown(KeyCode.K) && Time.time > canFire || Input.GetMouseButtonDown(0) && Time.time > canFire) 
         {
             Instantiate(sonarPrefab, transform.position, Quaternion.identity);
             canFire = Time.time + fireRate;
