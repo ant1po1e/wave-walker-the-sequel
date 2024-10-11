@@ -17,4 +17,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Basic Trap and Enemy.unity
     guid: 5842cfaa77538474988984fba559dcc9
+  - enabled: 1
+    path: Assets/_Scenes/Level 1.unity
+    guid: 870304236e2d0ef47996d076f8803738
+  - enabled: 1
+    path: Assets/_Scenes/Level 2.unity
+    guid: 77eff882a31f85b4e8e836ccf09c8ed4
+  - enabled: 1
+    path: Assets/_Scenes/Level 3.unity
+    guid: 1ece781d8f2560e4a99acdf102d088ef
+  - enabled: 1
+    path: Assets/_Scenes/Level 4.unity
+    guid: edb7e2c8bccb6014097e83dd57018906
+  - enabled: 1
+    path: Assets/_Scenes/Level 5.unity
+    guid: fb1adf6063d5fcf4fb83190c22955862
+  - enabled: 1
+    path: Assets/_Scenes/Level 6.unity
+    guid: cf5a3f2c1f51d06418cd3e18264394e0
   m_configObjects: {}
